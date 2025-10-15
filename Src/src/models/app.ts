@@ -17,7 +17,7 @@ form.addEventListener("submit", (e) => {
   const typeInput = form.elements.namedItem("type") as HTMLInputElement;
   const ageInput = form.elements.namedItem("age") as HTMLInputElement;
   const elementInput = form.elements.namedItem("element") as HTMLInputElement;
-  const abilitiesInput = form.elements.namedItem("abilites") as HTMLInputElement; // note: matches your HTML typo
+  const abilitiesInput = form.elements.namedItem("abilities") as HTMLInputElement; 
 
   // Get values
   const name = nameInput.value.trim();
