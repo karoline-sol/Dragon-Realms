@@ -1,5 +1,5 @@
-import { Dragon } from "./Dragon.js";
-import { Storage } from "./Storage.js";
+import { Dragon } from "./models/Dragon.js";
+import { Storage } from "./models/Storage.js";
 
 const form = document.getElementById("dragon-form") as HTMLFormElement;
 const charactersDiv = document.getElementById("characters") as HTMLDivElement;
