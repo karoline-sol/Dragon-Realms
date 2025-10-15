@@ -1,24 +1,21 @@
 // storage.ts
-import { Dragon } from "./Dragon";
+import { Dragon } from "./Dragon.js";
 
-const STORAGE_KEY = "dragons";
+export class Storage {
+  static load(): Dragon[] {
+    const data = localStorage.getItem("dragons");
+    return data ? JSON.parse(data) : [];
+  }
 
-export function saveToStorage(dragons: Dragon[]): void {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(dragons));
+  static save(dragon: Dragon) {
+    const dragons = this.load();
+    dragons.push(dragon);
+    localStorage.setItem("dragons", JSON.stringify(dragons));
+  }
+
+  static delete(id: number) {
+    const dragons = this.load().filter((d) => d.id !== id);
+    localStorage.setItem("dragons", JSON.stringify(dragons));
+  }
 }
 
-export function loadFromStorage(): Dragon[] {
-  const data = localStorage.getItem(STORAGE_KEY);
-  return data ? JSON.parse(data) : [];
-}
-
-export function addDragon(dragon: Dragon): void {
-  const dragons = loadFromStorage();
-  dragons.push(dragon);
-  saveToStorage(dragons);
-}
-
-export function deleteDragon(id: string): void {
-  const dragons = loadFromStorage().filter((d) => d.id !== id);
-  saveToStorage(dragons);
-}
